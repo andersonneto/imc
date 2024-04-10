@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template.xhtml">                
+
+    <ui:define name="title">Turmas</ui:define>
+
+    <ui:define name="content">
+        <h:form>
+            <p:growl id="msg" />
+            <p:panel header="Turmas">
+                <p:dataTable var="turma" value="#{turmasBean.turmas}">
+                    <f:facet name="header">
+                        <p:button icon="pi pi-plus" value="Novo" 
+                                  styleClass="rounded-button ui-button-success" 
+                                  title="Cadastrar uma nova turma"
+                                  outcome="/turmas/turma"/>
+                    </f:facet>
+
+                    <p:column headerText="Id" style="width: 90px; text-align: center;">
+                        <p:outputLabel value="#{turma.id}"/>
+                    </p:column>
+
+                    <p:column headerText="Nome"> 
+                        <p:outputLabel value="#{turma.nome}"/>
+                    </p:column>
+
+                    <p:column style="width: 90px; text-align: center;">
+                        <p:button id="editar" icon="pi pi-pencil"
+                                  outcome="/turmas/turma?id=#{turma.id}"
+                                  styleClass="rounded-button ui-button-flat "/>
+                        <p:tooltip for="editar" value="Editar turma" position="bottom"/>
+
+                        <p:commandButton id="excluir" icon="pi pi-trash" 
+                                         styleClass="rounded-button ui-button-flat ui-button-danger"
+                                         update="@form" 
+                                         actionListener="#{turmasBean.excluir(turma)}"/>
+                        <p:tooltip for="excluir" value="Excluir turma" position="bottom"/>
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </ui:define>
+</ui:composition>

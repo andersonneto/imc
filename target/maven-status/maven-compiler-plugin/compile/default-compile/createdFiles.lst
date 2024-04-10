@@ -1,0 +1,11 @@
+br\com\imc\DAO\AlunoDAO.class
+br\com\imc\DAO\ImcDAO.class
+br\com\imc\DAO\GenericDAO.class
+br\com\imc\DAO\TurmaDAO.class
+br\com\imc\domain\Aluno.class
+br\com\imc\util\HibernateContext.class
+br\com\imc\util\HibernateUtil.class
+br\com\imc\bean\TurmasBean.class
+br\com\imc\domain\Imc.class
+br\com\imc\domain\Turma.class
+br\com\imc\bean\TurmaBean.class
