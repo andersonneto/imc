@@ -1,7 +1,7 @@
 package br.com.imc.bean;
 
-import br.com.imc.DAO.TurmaDAO;
-import br.com.imc.domain.Turma;
+import br.com.imc.DAO.AlunoDAO;
+import br.com.imc.domain.Aluno;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -11,10 +11,10 @@ import org.omnifaces.util.Messages;
 
 @Named
 @ViewScoped
-public class TurmasBean implements Serializable {
+public class AlunosBean implements Serializable {
 
-    private List<Turma> turmas;
-    private TurmaDAO turmaDAO;
+    private List<Aluno> alunos;
+    private AlunoDAO alunoDAO;
 
     /**
      * Método a ser chamado no inicio do carregamento da página
@@ -22,8 +22,8 @@ public class TurmasBean implements Serializable {
     @PostConstruct
     public void init() {
         try {
-            turmaDAO = new TurmaDAO();
-            turmas = turmaDAO.listar();
+            alunoDAO = new AlunoDAO();
+            alunos = alunoDAO.listar();
         } catch (RuntimeException e) {
             Messages.addGlobalError("Erro ao tentar listar os dados");
         }
@@ -32,21 +32,21 @@ public class TurmasBean implements Serializable {
     public void novo() {
     }
 
-    public void excluir(Turma turma) {
+    public void excluir(Aluno aluno) {
         try {
-            turmaDAO.excluir(turma);
-            turmas = turmaDAO.listar();
-            Messages.addGlobalInfo("Turma excluída com sucesso");
+            alunoDAO.excluir(aluno);
+            alunos = alunoDAO.listar();
+            Messages.addGlobalInfo("Aluno excluído com sucesso");
         } catch (RuntimeException e) {
-            Messages.addGlobalError("Erro ao tentar excluir a turma");
+            Messages.addGlobalError("Erro ao tentar excluir o aluno");
         }
     }
 
-    public List<Turma> getTurmas() {
-        return turmas;
+    public List<Aluno> getAlunos() {
+        return alunos;
     }
 
-    public void setTurmas(List<Turma> turmas) {
-        this.turmas = turmas;
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
 }

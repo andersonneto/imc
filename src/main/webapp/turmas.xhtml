@@ -13,10 +13,17 @@
             <p:panel header="Turmas">
                 <p:dataTable var="turma" value="#{turmasBean.turmas}">
                     <f:facet name="header">
-                        <p:button icon="pi pi-plus" value="Novo" 
-                                  styleClass="rounded-button ui-button-success" 
-                                  title="Cadastrar uma nova turma"
-                                  outcome="/turmas/turma"/>
+                        <div class="flex flex-wrap gap-3">
+                            <p:button icon="pi pi-plus" value="Novo" 
+                                      styleClass="rounded-button ui-button-success" 
+                                      title="Cadastrar uma nova turma"
+                                      outcome="/turmas/turma"/>
+
+                            <p:button icon="pi pi-users" value="Alunos"
+                                      title="Lista de alunos"
+                                      styleClass="rounded-button"                                  
+                                      outcome="/alunos"/>
+                        </div>
                     </f:facet>
 
                     <p:column headerText="Id" style="width: 90px; text-align: center;">

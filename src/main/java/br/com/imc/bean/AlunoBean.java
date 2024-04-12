@@ -1,7 +1,7 @@
 package br.com.imc.bean;
 
-import br.com.imc.DAO.TurmaDAO;
-import br.com.imc.domain.Turma;
+import br.com.imc.DAO.AlunoDAO;
+import br.com.imc.domain.Aluno;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
@@ -11,21 +11,21 @@ import org.omnifaces.util.Messages;
 
 @Named
 @ViewScoped
-public class TurmaBean implements Serializable {
+public class AlunoBean implements Serializable {
 
     @Param
     private Integer id;
 
-    private Turma turma;
-    private TurmaDAO turmaDAO;
+    private Aluno aluno;
+    private AlunoDAO alunoDAO;
 
     @PostConstruct
     public void init() {
-        turma = new Turma();
-        turmaDAO = new TurmaDAO();
+        aluno = new Aluno();
+        alunoDAO = new AlunoDAO();
 
         if (id != null) {
-            turma = turmaDAO.buscar(id);
+            aluno = alunoDAO.buscar(id);
         }
     }
 
@@ -34,9 +34,9 @@ public class TurmaBean implements Serializable {
 
     public void salvar() {
         try {
-            System.out.println(turma.toString());
-            TurmaDAO turmaDAO = new TurmaDAO();
-            turma = turmaDAO.merge(turma);
+            System.out.println(aluno.toString());
+            AlunoDAO alunoDAO = new AlunoDAO();
+            aluno = alunoDAO.merge(aluno);
 
             Messages.addGlobalInfo("Dados salvos com sucesso");
         } catch (RuntimeException e) {
@@ -44,12 +44,12 @@ public class TurmaBean implements Serializable {
         }
     }
 
-    public Turma getTurma() {
-        return turma;
+    public Aluno getAluno() {
+        return aluno;
     }
 
-    public void setTurma(Turma turma) {
-        this.turma = turma;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
     public Integer getId() {
