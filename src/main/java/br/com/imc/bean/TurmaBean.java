@@ -30,6 +30,7 @@ public class TurmaBean implements Serializable {
     }
 
     public void novo() {
+        turma = new Turma();
     }
 
     public void salvar() {

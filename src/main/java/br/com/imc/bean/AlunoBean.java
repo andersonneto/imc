@@ -1,8 +1,11 @@
 package br.com.imc.bean;
 
 import br.com.imc.DAO.AlunoDAO;
+import br.com.imc.DAO.TurmaDAO;
 import br.com.imc.domain.Aluno;
+import br.com.imc.domain.Turma;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -18,15 +21,20 @@ public class AlunoBean implements Serializable {
 
     private Aluno aluno;
     private AlunoDAO alunoDAO;
+    private TurmaDAO turmaDAO;
+    private List<Turma> turmas;
 
     @PostConstruct
     public void init() {
         aluno = new Aluno();
         alunoDAO = new AlunoDAO();
+        turmaDAO = new TurmaDAO();
 
         if (id != null) {
             aluno = alunoDAO.buscar(id);
         }
+        //vamos preencher a variável turmas com a lista das turmas
+        turmas = turmaDAO.listar();
     }
 
     public void novo() {
@@ -58,5 +66,13 @@ public class AlunoBean implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<Turma> getTurmas() {
+        return turmas;
+    }
+
+    public void setTurmas(List<Turma> turmas) {
+        this.turmas = turmas;
     }
 }

@@ -15,6 +15,7 @@ public class TurmasBean implements Serializable {
 
     private List<Turma> turmas;
     private TurmaDAO turmaDAO;
+    
 
     /**
      * Método a ser chamado no inicio do carregamento da página

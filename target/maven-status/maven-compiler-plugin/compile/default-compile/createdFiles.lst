@@ -1,4 +1,5 @@
 br\com\imc\DAO\AlunoDAO.class
+br\com\imc\bean\AlunoBean.class
 br\com\imc\DAO\ImcDAO.class
 br\com\imc\DAO\GenericDAO.class
 br\com\imc\domain\Imc.class

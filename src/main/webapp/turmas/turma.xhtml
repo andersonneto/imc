@@ -17,6 +17,7 @@
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel value="Id" />
                         <p:inputText value="#{turmaBean.turma.id}"
+  
                                      disabled="true"/>
                     </div>
                     <div class="col-12 md:col-6 lg:col-3">
@@ -29,6 +30,10 @@
                 <div class="flex flex-wrap mt-3 gap-3">
                     <p:button icon="pi pi-arrow-left" value="Voltar" outcome="/turmas"
                               styleClass="rounded-button"/>
+                    
+                    <p:commandButton value="Novo" actionListener="#{turmaBean.novo}"
+                                     update="@form"/>
+                    
                     <p:commandButton icon="pi pi-save" value="Salvar" styleClass="rounded-button"
                                      update="@form"
                                      actionListener="#{turmaBean.salvar}"/> 

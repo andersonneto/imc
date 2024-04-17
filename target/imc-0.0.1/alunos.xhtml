@@ -1,6 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:fn="http://java.sun.com/jsp/jstl/functions"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/WEB-INF/template.xhtml">                
@@ -11,7 +12,11 @@
         <h:form>
             <p:growl id="msg" />
             <p:panel header="Alunos">
-                <p:dataTable var="aluno" value="#{alunosBean.alunos}">
+                <p:dataTable var="aluno" value="#{alunosBean.alunos}"
+                             rows="50" paginator="true" paginatorPosition="bottom"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                             rowsPerPageTemplate="10,50,100,{ShowAll|'Tudo'}">
                     <f:facet name="header">
                         <div class="flex flex-wrap gap-3">
                             <p:button icon="pi pi-plus" value="Novo" 
@@ -42,6 +47,10 @@
                         <p:outputLabel value="#{aluno.cpf}"/>
                     </p:column>
 
+                    <p:column headerText="Turma"> 
+                        <p:outputLabel value="#{aluno.turma.nome}"/>
+                    </p:column>
+
                     <p:column style="width: 90px; text-align: center;">
                         <p:button id="editar" icon="pi pi-pencil"
                                   outcome="/alunos/aluno?id=#{aluno.id}"
@@ -54,6 +63,7 @@
                                          actionListener="#{alunosBean.excluir(aluno)}"/>
                         <p:tooltip for="excluir" value="Excluir aluno" position="bottom"/>
                     </p:column>
+
                 </p:dataTable>
             </p:panel>
         </h:form>

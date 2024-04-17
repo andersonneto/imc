@@ -11,8 +11,9 @@
 
         <h:form id="form">
             <p:growl id="msg" />
+            <p:focus context="painel"/>
 
-            <p:panel header="Aluno">
+            <p:panel id="painel" header="Aluno">
                 <div class="grid ui-fluid">
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel value="Id" />
@@ -39,18 +40,28 @@
                         <p:inputMask id="date" value="#{alunoBean.aluno.cpf}" 
                                      mask="999.999.999-99" />
                     </div>
-                    
-                     <div class="col-12 md:col-6 lg:col-3">
+
+                    <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel for="cel" value="Celular" />
                         <p:inputMask id="cel" value="#{alunoBean.aluno.celular}" 
                                      mask="(99) 99999-9999" />
                     </div>
-                    
+
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel for="email" value="Email" />
                         <p:inputText id="email" required="true" maxlength="100"
                                      placeholder="Informe o email" 
                                      value="#{alunoBean.aluno.email}"/>
+                    </div>
+
+                    <div class="col-12 md:col-6 lg:col-3">
+                        <p:outputLabel for="turma" value="Turma" />
+                        <p:selectOneMenu id="turma" value="#{alunoBean.aluno.turma}"
+                                         converter="omnifaces.SelectItemsConverter">
+                            <f:selectItem itemLabel="Selecione" itemValue=""/>
+                            <f:selectItems value="#{alunoBean.turmas}" var="t" 
+                                           itemValue="#{t}" itemLabel="#{t.nome}"/>
+                        </p:selectOneMenu>
                     </div>
                 </div>
                 <div class="flex flex-wrap mt-3 gap-3">
