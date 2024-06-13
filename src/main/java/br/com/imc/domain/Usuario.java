@@ -2,28 +2,34 @@ package br.com.imc.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
-public class Turma implements Serializable {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String nome;
-
-    @Override
-    public String toString() {
-        return "Turma{" + "id=" + id + ", nome=" + nome + '}';
-    }
+    @Column(length = 50, nullable = false)
+    private String login;
+    @Column(length = 25, nullable = false)
+    private String senha;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Aluno aluno;
+    @Transient
+    private String senha2;
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 11 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -38,7 +44,7 @@ public class Turma implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Turma other = (Turma) obj;
+        final Usuario other = (Usuario) obj;
         return Objects.equals(this.id, other.id);
     }
 
@@ -50,12 +56,36 @@ public class Turma implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getLogin() {
+        return login;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public String getSenha2() {
+        return senha2;
+    }
+
+    public void setSenha2(String senha2) {
+        this.senha2 = senha2;
     }
 
 }

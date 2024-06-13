@@ -2,14 +2,21 @@ package br.com.imc.domain;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 public class Aluno implements Serializable {
@@ -19,21 +26,25 @@ public class Aluno implements Serializable {
     private Integer id;
     private String nome;
     private LocalDate dataNasc;
+    @CPF
     @Column(length = 14)
     private String cpf;
     @Column(length = 15)
     private String celular;
+    @Email
     private String email;
     @ManyToOne(cascade = CascadeType.ALL)
     private Turma turma;
+    @OneToMany(mappedBy = "aluno", fetch = FetchType.EAGER,
+            cascade = {CascadeType.MERGE})
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Imc> imcs;
 
     @Override
     public String toString() {
         return "Aluno{" + "id=" + id + ", nome=" + nome + ", dataNasc=" + dataNasc + ", cpf=" + cpf + ", celular=" + celular + ", email=" + email + ", turma=" + turma + '}';
     }
 
-    
-    
     @Override
     public int hashCode() {
         int hash = 5;
@@ -110,6 +121,14 @@ public class Aluno implements Serializable {
 
     public void setTurma(Turma turma) {
         this.turma = turma;
+    }
+
+    public List<Imc> getImcs() {
+        return imcs;
+    }
+
+    public void setImcs(List<Imc> imcs) {
+        this.imcs = imcs;
     }
 
 }

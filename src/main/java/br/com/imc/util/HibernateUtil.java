@@ -1,7 +1,9 @@
 package br.com.imc.util;
 
 import br.com.imc.domain.Aluno;
+import br.com.imc.domain.Imc;
 import br.com.imc.domain.Turma;
+import br.com.imc.domain.Usuario;
 import java.sql.Connection;
 import java.util.Properties;
 import org.hibernate.HibernateException;
@@ -24,7 +26,7 @@ public class HibernateUtil {
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "org.mariadb.jdbc.Driver");
                 settings.put(Environment.URL, "jdbc:mariadb://localhost:3306/imc");
-                settings.put(Environment.USER, "admin"); //usuário do banco
+                settings.put(Environment.USER, "admin"); //root
                 settings.put(Environment.PASS, ""); //senha do banco
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MariaDB10Dialect");
                 settings.put(Environment.SHOW_SQL, "true"); //mostrar codigo sql
@@ -35,7 +37,10 @@ public class HibernateUtil {
 
                 //adicionar as classes
                 configuration.addAnnotatedClass(Aluno.class);
+                configuration.addAnnotatedClass(Imc.class);
                 configuration.addAnnotatedClass(Turma.class);
+                configuration.addAnnotatedClass(Usuario.class);
+                
 
                 serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties())
                         .build();

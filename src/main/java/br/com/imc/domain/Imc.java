@@ -16,15 +16,22 @@ public class Imc implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private LocalDateTime dataImc;
-    private Integer peso;
-    private Integer altura;
+    private Float peso;
+    private Float altura;
+    private Float imc;
+    private String resultado;
     @ManyToOne
     private Aluno aluno;
 
     @Override
+    public String toString() {
+        return "Imc{" + "id=" + id + ", dataImc=" + dataImc + ", peso=" + peso + ", altura=" + altura + ", imc=" + imc + ", resultado=" + resultado + ", aluno=" + aluno + '}';
+    }
+
+    @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -59,19 +66,19 @@ public class Imc implements Serializable {
         this.dataImc = dataImc;
     }
 
-    public Integer getPeso() {
+    public Float getPeso() {
         return peso;
     }
 
-    public void setPeso(Integer peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
     }
 
-    public Integer getAltura() {
+    public Float getAltura() {
         return altura;
     }
 
-    public void setAltura(Integer altura) {
+    public void setAltura(Float altura) {
         this.altura = altura;
     }
 
@@ -83,4 +90,19 @@ public class Imc implements Serializable {
         this.aluno = aluno;
     }
 
+    public Float getImc() {
+        return imc;
+    }
+
+    public void setImc(Float imc) {
+        this.imc = imc;
+    }
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
 }

@@ -1,6 +1,6 @@
 package br.com.imc.DAO;
 
-import br.com.imc.domain.Turma;
+import br.com.imc.domain.Usuario;
 
-public class TurmaDAO extends GenericDAO<Turma> {
+public class UsuarioDAO extends GenericDAO<Usuario> {
 }

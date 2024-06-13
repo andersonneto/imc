@@ -8,11 +8,14 @@
 
     <h:head> 
         <title><ui:insert name="title">IMC</ui:insert></title>
+        <h:outputScript name="primeblocks.js" library="js" />       
     </h:head>
 
-    <h:body>
-        <link rel="stylesheet" href="https://unpkg.com/primeflex@latest/primeflex.css"/>                       
+    <h:body class="surface-200">
+
         <ui:insert name="content"></ui:insert>
-        
+
+        <h:outputStylesheet name="font-awesome/6.5.2/css/all-jsf.css" library="webjars"/>
+        <h:outputStylesheet name="primeflex3.css" library="css" />       
     </h:body>
 </html>

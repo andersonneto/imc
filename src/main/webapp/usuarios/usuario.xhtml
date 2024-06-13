@@ -5,7 +5,7 @@
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 template="/WEB-INF/template.xhtml">             
 
-    <ui:define name="title">Aluno</ui:define>
+    <ui:define name="title">Usuário</ui:define>
 
     <ui:define name="content">
 
@@ -13,11 +13,11 @@
             <p:growl id="msg" />
             <p:focus context="painel"/>
 
-            <p:panel id="painel" header="Aluno">
+            <p:panel id="painel" header="Usuário">
                 <div class="grid ui-fluid">
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel value="Id" />
-                        <p:inputText value="#{alunoBean.aluno.id}"
+                        <p:inputText value="#{usuarioBean.aluno.id}"
                                      disabled="true"/>
                     </div>
 
@@ -25,25 +25,25 @@
                         <p:outputLabel for="nome" value="Nome" />
                         <p:inputText id="nome" required="true" maxlength="150"
                                      placeholder="Informe o nome do aluno" 
-                                     value="#{alunoBean.aluno.nome}"/>
+                                     value="#{usuarioBean.aluno.nome}"/>
                     </div>
 
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel for="mask" value="Data de nascimento"/>
-                        <p:datePicker id="mask" value="#{alunoBean.aluno.dataNasc}" 
+                        <p:datePicker id="mask" value="#{usuarioBean.aluno.dataNasc}" 
                                       pattern="dd/MM/yyyy" showButtonBar="true" mask="true"
                                       required="true" />
                     </div>
 
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel for="@next" value="CPF" />
-                        <p:inputMask id="date" value="#{alunoBean.aluno.cpf}" 
+                        <p:inputMask id="date" value="#{usuarioBean.aluno.cpf}" 
                                      mask="999.999.999-99" />
                     </div>
 
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel for="cel" value="Celular" />
-                        <p:inputMask id="cel" value="#{alunoBean.aluno.celular}" 
+                        <p:inputMask id="cel" value="#{usuarioBean.aluno.celular}" 
                                      mask="(99) 99999-9999" />
                     </div>
 
@@ -51,25 +51,51 @@
                         <p:outputLabel for="email" value="Email" />
                         <p:inputText id="email" required="true" maxlength="100"
                                      placeholder="Informe o email" 
-                                     value="#{alunoBean.aluno.email}"/>
+                                     value="#{usuarioBean.aluno.email}"/>
                     </div>
 
                     <div class="col-12 md:col-6 lg:col-3">
                         <p:outputLabel for="turma" value="Turma" />
-                        <p:selectOneMenu id="turma" value="#{alunoBean.aluno.turma}"
+                        <p:selectOneMenu id="turma" value="#{usuarioBean.aluno.turma}"
                                          converter="omnifaces.SelectItemsConverter">
                             <f:selectItem itemLabel="Selecione" itemValue=""/>
-                            <f:selectItems value="#{alunoBean.turmas}" var="t" 
+                            <f:selectItems value="#{usuarioBean.turmas}" var="t" 
                                            itemValue="#{t}" itemLabel="#{t.nome}"/>
                         </p:selectOneMenu>
                     </div>
+                    <div class="col-12">
+                        <span class="font-bold">DADOS DE ACESSO</span>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-3">
+                        <p:outputLabel for="usuario" value="Nome de usuário" />
+                        <p:inputText id="usuario" required="true" maxlength="50"
+                                     placeholder="Informe o login de acesso" 
+                                     value="#{usuarioBean.usuario.login}"/>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-3">
+                        <p:outputLabel for="senha" value="Senha" />
+                        <p:password id="senha" required="true" maxlength="50"
+                                    placeholder="Informe a senha" 
+                                    toggleMask="true" redisplay="true"
+                                    style="width: 100%"
+                                    value="#{usuarioBean.usuario.senha}"/>
+                    </div>
+                    <div class="col-12 md:col-6 lg:col-3">
+                        <p:outputLabel for="senha2" value="Confirme a senha" />
+                        <p:password id="senha2" required="true" maxlength="50"
+                                    placeholder="Confirme a senha"
+                                    style="width: 100%"
+                                    toggleMask="true" redisplay="true"
+                                    value="#{usuarioBean.usuario.senha2}"/>
+                    </div>
+
                 </div>
                 <div class="flex flex-wrap mt-3 gap-3">
                     <p:button icon="pi pi-arrow-left" value="Voltar" outcome="/alunos"
-                              styleClass="rounded-button"/>
+                              styleClass="rounded-button ui-button-flat"/>
                     <p:commandButton icon="pi pi-save" value="Salvar" styleClass="rounded-button"
                                      update="@form"
-                                     actionListener="#{alunoBean.salvar}"/> 
+                                     actionListener="#{usuarioBean.salvar}"/> 
                 </div>
             </p:panel>
         </h:form>

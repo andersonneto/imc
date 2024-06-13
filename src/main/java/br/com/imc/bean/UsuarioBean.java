@@ -4,6 +4,7 @@ import br.com.imc.DAO.AlunoDAO;
 import br.com.imc.DAO.TurmaDAO;
 import br.com.imc.domain.Aluno;
 import br.com.imc.domain.Turma;
+import br.com.imc.domain.Usuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -14,12 +15,14 @@ import org.omnifaces.util.Messages;
 
 @Named
 @ViewScoped
-public class AlunoBean implements Serializable {
+public class UsuarioBean implements Serializable {
 
     @Param
     private Integer id;
 
     private Aluno aluno;
+    private Usuario usuario;
+
     private AlunoDAO alunoDAO;
     private TurmaDAO turmaDAO;
     private List<Turma> turmas;
@@ -27,6 +30,8 @@ public class AlunoBean implements Serializable {
     @PostConstruct
     public void init() {
         aluno = new Aluno();
+        usuario = new Usuario();
+        
         alunoDAO = new AlunoDAO();
         turmaDAO = new TurmaDAO();
 
@@ -74,5 +79,13 @@ public class AlunoBean implements Serializable {
 
     public void setTurmas(List<Turma> turmas) {
         this.turmas = turmas;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

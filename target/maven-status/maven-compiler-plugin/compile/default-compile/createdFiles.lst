@@ -1,10 +1,15 @@
 br\com\imc\DAO\AlunoDAO.class
+br\com\imc\model\ImcModel.class
 br\com\imc\bean\AlunoBean.class
 br\com\imc\DAO\ImcDAO.class
 br\com\imc\DAO\GenericDAO.class
+br\com\imc\domain\Usuario.class
+br\com\imc\bean\ImcBean.class
 br\com\imc\domain\Imc.class
 br\com\imc\bean\TurmaBean.class
 br\com\imc\DAO\TurmaDAO.class
+br\com\imc\bean\UsuarioBean.class
+br\com\imc\DAO\UsuarioDAO.class
 br\com\imc\bean\AlunosBean.class
 br\com\imc\domain\Aluno.class
 br\com\imc\util\HibernateContext.class

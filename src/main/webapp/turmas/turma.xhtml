@@ -29,10 +29,10 @@
                 </div>
                 <div class="flex flex-wrap mt-3 gap-3">
                     <p:button icon="pi pi-arrow-left" value="Voltar" outcome="/turmas"
-                              styleClass="rounded-button"/>
+                              styleClass="rounded-button ui-button-flat"/>
                     
                     <p:commandButton value="Novo" actionListener="#{turmaBean.novo}"
-                                     update="@form"/>
+                                     update="@form" styleClass="rounded-button"/>
                     
                     <p:commandButton icon="pi pi-save" value="Salvar" styleClass="rounded-button"
                                      update="@form"

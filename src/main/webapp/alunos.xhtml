@@ -51,17 +51,17 @@
                         <p:outputLabel value="#{aluno.turma.nome}"/>
                     </p:column>
 
-                    <p:column style="width: 90px; text-align: center;">
-                        <p:button id="editar" icon="pi pi-pencil"
-                                  outcome="/alunos/aluno?id=#{aluno.id}"
-                                  styleClass="rounded-button ui-button-flat "/>
-                        <p:tooltip for="editar" value="Editar aluno" position="bottom"/>
+                    <p:column style="width: 30px; text-align: center;">
+                        <p:menuButton icon="pi pi-ellipsis-h"
+                                      buttonStyleClass="rounded-button ui-button-flat">  
+                            <p:menuitem icon="fa-solid fa-gauge" value="IMC" 
+                                        outcome="/imc?aluno_id=#{aluno.id}"/>
+                            <p:menuitem icon="pi pi-pencil" value="Editar"
+                                        outcome="/alunos/aluno?id=#{aluno.id}"/>
+                            <p:menuitem icon="pi pi-trash" value="Excluir"                                        
+                                        update="@form" actionListener="#{alunosBean.excluir(aluno)}"/>
 
-                        <p:commandButton id="excluir" icon="pi pi-trash" 
-                                         styleClass="rounded-button ui-button-flat ui-button-danger"
-                                         update="@form" 
-                                         actionListener="#{alunosBean.excluir(aluno)}"/>
-                        <p:tooltip for="excluir" value="Excluir aluno" position="bottom"/>
+                        </p:menuButton>
                     </p:column>
 
                 </p:dataTable>
